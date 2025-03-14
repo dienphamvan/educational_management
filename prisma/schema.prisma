@@ -12,6 +12,7 @@ model Teacher {
   id              Int              @id @default(autoincrement())
   email           String           @unique
   teacherStudents TeacherStudent[]
+  assignments     Assignment[]
 
   @@map("teacher")
 }
@@ -32,6 +33,33 @@ model Student {
   email           String           @unique
   isSuspend       Boolean          @default(false)
   teacherStudents TeacherStudent[]
+  assignments     Assignment[]
 
   @@map("student")
+}
+
+enum AssignmentStatus {
+  PENDING
+  COMPLETED
+  GRADED
+  LATE
+}
+
+model Assignment {
+  id            Int              @id @default(autoincrement())
+  title         String
+  description   String
+  dueDate       DateTime
+  status        AssignmentStatus
+  submittedDate DateTime?
+  grade         String?
+  feedback      String?
+  createdBy     String
+  teacherId     Int
+  studentId     Int
+
+  teacher Teacher @relation(fields: [teacherId], references: [id])
+  student Student @relation(fields: [studentId], references: [id])
+
+  @@map("assignment")
 }

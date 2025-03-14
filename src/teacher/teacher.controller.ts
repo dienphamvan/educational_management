@@ -4,6 +4,7 @@ import { RegisterRequestDto } from './dto/register-request.dto';
 import { SuspendRequestDto } from './dto/suspend-request.dto';
 import { TeacherService } from './teacher.service';
 import { RetrieveNotificationsDto } from './dto/retrieve-notifications-request.dto';
+import { GetAssignmentRequestDto } from './dto/get-assignment-request.dto';
 
 @Controller()
 export class TeacherController {
@@ -30,5 +31,10 @@ export class TeacherController {
   @HttpCode(200)
   retrieveNotifications(@Body() body: RetrieveNotificationsDto) {
     return this.teacherService.retrieveNotifications(body);
+  }
+
+  @Get('assignments')
+  getAssignments(@Query() query: GetAssignmentRequestDto) {
+    return this.teacherService.getAssignments(query);
   }
 }

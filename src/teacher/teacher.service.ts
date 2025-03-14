@@ -5,6 +5,7 @@ import { GetCommonStudentsRequestDto } from './dto/get-common-students-request.d
 import { RegisterRequestDto } from './dto/register-request.dto';
 import { RetrieveNotificationsDto } from './dto/retrieve-notifications-request.dto';
 import { SuspendRequestDto } from './dto/suspend-request.dto';
+import { GetAssignmentRequestDto } from './dto/get-assignment-request.dto';
 
 @Injectable()
 export class TeacherService {
@@ -146,5 +147,24 @@ export class TeacherService {
     });
 
     return studentsInNotification;
+  }
+
+  async getAssignments(query: GetAssignmentRequestDto) {
+    const assignments = await this.prisma.assignment.findMany({
+      where: {
+        status: query.status,
+        student: {
+          email: {
+            in: query.student,
+          },
+        },
+      },
+
+      omit: {
+        studentId: true,
+        teacherId: true,
+      },
+    });
+    return assignments;
   }
 }

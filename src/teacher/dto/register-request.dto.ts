@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 import { ArrayNotEmpty, IsEmail, IsNotEmpty } from 'class-validator';
 
 export class RegisterRequestDto {
@@ -13,6 +14,7 @@ export class RegisterRequestDto {
       type: 'string',
     },
   })
+  @Transform(({ value }) => (Array.isArray(value) ? value : [value]))
   @ArrayNotEmpty()
   @IsEmail(
     {},

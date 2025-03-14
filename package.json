@@ -19,6 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./jest-e2e.config.ts",
     "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
     "pre-deploy": "npm run prisma:generate && npm run build && npm run prisma:deploy",
     "docker:app-up": "docker compose --env-file .env.docker up app -d",

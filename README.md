@@ -28,9 +28,9 @@ Step 2: Create a .env.docker file in the root of the project with the following 
 - Paste following variables:
 
 ```bash
-DATABASE_URL=mysql://root:root@database:3306/class_db
+DATABASE_URL=mysql://root:root@database:3306/educational_management
 MYSQL_ROOT_PASSWORD=root
-MYSQL_DATABASE=class_db
+MYSQL_DATABASE=educational_management
 MYSQL_USER=root
 MYSQL_PASSWORD=root
 PORT=3001
