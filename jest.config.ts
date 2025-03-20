@@ -21,7 +21,7 @@ const jestConfig: Config.InitialOptions = {
     '!src/prisma/*.ts', // Exclude Prisma files
     '!src/test/**/*.ts', // Exclude test folder
     '!src/**/*.(spec|e2e-spec).ts', // Exclude e2e-spec and spec files
-    '!src/common/(config|constant|mock)/*.ts',
+    '!src/common/(config|constant|mock|filter)/*.ts',
   ],
   coverageDirectory: './coverage', // Directory to output coverage reports
 };
