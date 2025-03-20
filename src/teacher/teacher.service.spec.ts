@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { TeacherService } from './teacher.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { mockPrismaService } from 'src/common/mock/prisma-service.mock';
+import { mockPrismaService } from 'src/common/mock-test/prisma-service.mock';
 
 describe('TeacherService', () => {
   let teacherService: TeacherService;

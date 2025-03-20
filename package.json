@@ -1,5 +1,5 @@
 {
-  "name": "class_admin",
+  "name": "educational_management",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -21,12 +21,8 @@
     "prisma:generate": "prisma generate",
     "prisma:deploy": "prisma migrate deploy",
     "pre-deploy": "npm run prisma:generate && npm run build && npm run prisma:deploy",
-    "docker:app-up": "docker compose --env-file .env.docker up app -d",
-    "docker:app-build": "docker compose --env-file .env.docker build app",
-    "docker:app-rebuild": "npm run docker:app-build && npm run docker:app-up",
-    "docker:app-test": "docker exec app npm run test",
-    "docker:app-add-tag": "docker tag class_admin-app dienpvan/class_admin-app",
-    "docker:app-push": "docker push dienpvan/class_admin-app"
+    "docker:up": "docker compose --env-file .env.docker up -d",
+    "docker:destroy": "docker compose down -v --rmi all"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

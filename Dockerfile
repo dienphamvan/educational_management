@@ -14,4 +14,4 @@ RUN npm run build
 
 ENTRYPOINT [ "sh", "-c" ]
 
-CMD [ "npm run prisma:deploy && npm run start" ]
+CMD [ "npm run prisma:deploy && npx prisma db seed && npm run start" ]
